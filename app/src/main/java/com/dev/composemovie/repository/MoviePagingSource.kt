@@ -5,7 +5,7 @@ import androidx.paging.PagingState
 import com.dev.composemovie.model.Result
 import com.dev.composemovie.network.MovieApi
 
-class MoviePagingSource(private val api: MovieApi, val token: String,val genre: Int) : PagingSource<Int,Result>(){
+class MoviePagingSource(private val api: MovieApi, private val token: String,val genre: Int) : PagingSource<Int,Result>(){
     override fun getRefreshKey(state: PagingState<Int, Result>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
             val anchorPage = state.closestPageToPosition(anchorPosition)

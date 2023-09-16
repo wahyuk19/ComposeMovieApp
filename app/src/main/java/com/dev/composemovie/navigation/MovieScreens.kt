@@ -5,7 +5,7 @@ enum class MovieScreens {
     GenresScreen,
     MovieListScreen,
     MovieDetailScreen,
-    ReviewScreen;
+    ReviewsScreen;
 
     companion object {
         fun fromRoute(route: String):MovieScreens
@@ -14,7 +14,7 @@ enum class MovieScreens {
             GenresScreen.name -> GenresScreen
             MovieListScreen.name -> MovieListScreen
             MovieDetailScreen.name -> MovieDetailScreen
-            ReviewScreen.name -> ReviewScreen
+            ReviewsScreen.name -> ReviewsScreen
             else -> throw IllegalArgumentException("Route $route is recognized")
         }
     }

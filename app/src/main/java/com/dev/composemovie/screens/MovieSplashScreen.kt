@@ -37,7 +37,11 @@ fun MovieSplashScreen(navController: NavController){
         )
         delay(2000L)
 
-        navController.navigate(MovieScreens.GenresScreen.name)
+        navController.navigate(MovieScreens.GenresScreen.name){
+            popUpTo(MovieScreens.SplashScreen.name){
+                inclusive = true
+            }
+        }
     }
 
     Surface(modifier = Modifier

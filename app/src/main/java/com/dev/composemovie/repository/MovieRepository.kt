@@ -1,19 +1,17 @@
 package com.dev.composemovie.repository
 
-import androidx.lifecycle.LiveData
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import androidx.paging.liveData
 import com.dev.composemovie.BuildConfig
 import com.dev.composemovie.data.Resource
 import com.dev.composemovie.model.GenreX
 import com.dev.composemovie.model.MovieDetails
-import com.dev.composemovie.model.MovieDiscover
 import com.dev.composemovie.model.Result
 import com.dev.composemovie.model.ResultX
 import com.dev.composemovie.model.Videos
 import com.dev.composemovie.network.MovieApi
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class MovieRepository @Inject constructor(private val api: MovieApi) {
@@ -30,7 +28,7 @@ class MovieRepository @Inject constructor(private val api: MovieApi) {
         }
     }
 
-    fun getMovies(genre: Int) : LiveData<PagingData<Result>>{
+    fun getMovies(genre: Int) : Flow<PagingData<Result>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 5
@@ -38,7 +36,7 @@ class MovieRepository @Inject constructor(private val api: MovieApi) {
             pagingSourceFactory = {
                 MoviePagingSource(api,BuildConfig.API_TOKEN, genre = genre)
             }
-        ).liveData
+        ).flow
     }
 
     suspend fun getMovieDetails(movieId: Int): Resource<MovieDetails>{
@@ -63,7 +61,7 @@ class MovieRepository @Inject constructor(private val api: MovieApi) {
         return Resource.Success(data = response)
     }
 
-    fun getMovieReview(movieId: Int) : LiveData<PagingData<ResultX>>{
+    fun getMovieReview(movieId: Int) : Flow<PagingData<ResultX>>{
         return Pager(
             config = PagingConfig(
                 pageSize = 5
@@ -71,7 +69,7 @@ class MovieRepository @Inject constructor(private val api: MovieApi) {
             pagingSourceFactory = {
                 ReviewsPagingSource(api,BuildConfig.API_TOKEN,movieId)
             }
-        ).liveData
+        ).flow
     }
 
 }

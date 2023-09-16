@@ -2,7 +2,6 @@ package com.dev.composemovie.repository
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.dev.composemovie.model.Result
 import com.dev.composemovie.model.ResultX
 import com.dev.composemovie.network.MovieApi
 

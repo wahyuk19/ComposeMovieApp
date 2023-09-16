@@ -27,6 +27,8 @@ android {
             buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
             buildConfigField("String", "API_KEY", "\"75169d4766d8161565ecb31d47532259\"")
             buildConfigField("String", "API_TOKEN", "\"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NTE2OWQ0NzY2ZDgxNjE1NjVlY2IzMWQ0NzUzMjI1OSIsInN1YiI6IjYwYTQ4YjJiZTI3MjYwMDAyOWQ0NmNhNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.shD0eUUgdINdOe323U1sSJc5bGwvhUsUk0gzUToriTU\"")
+            buildConfigField("String","IMAGE_URL","\"https://image.tmdb.org/t/p/w300/\"")
+            buildConfigField("String","YOUTUBE_URL","\"https://www.youtube.com/watch?v=\"")
         }
         release {
             isMinifyEnabled = false
@@ -100,5 +102,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.5.2")
 
-    implementation("androidx.paging:paging-runtime-ktx:3.1.1")
+    implementation("androidx.paging:paging-runtime:3.1.1")
+    implementation("androidx.paging:paging-compose:1.0.0-alpha16")
+    implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:11.1.0")
 }

@@ -30,7 +30,7 @@ fun MovieNavigation(){
             type = NavType.StringType
         })){backStackEntry ->
             backStackEntry.arguments?.getString("genreId").let {
-                MovieListScreen(navController = navController, genreId = it.toString().toInt())
+                MovieListScreen(navController = navController, genreId = it.toString())
             }
 
         }
@@ -39,15 +39,15 @@ fun MovieNavigation(){
             type = NavType.StringType
         })){backStackEntry ->
             backStackEntry.arguments?.getString("movieId").let {
-                MovieDetailScreen(navController = navController, movieId = it.toString().toInt())
+                MovieDetailScreen(navController = navController, movieId = it.toString())
             }
         }
-        val reviews = MovieScreens.ReviewScreen.name
+        val reviews = MovieScreens.ReviewsScreen.name
         composable("$reviews/{movieId}", arguments = listOf(navArgument("movieId"){
             type = NavType.StringType
         })){backStackEntry ->
             backStackEntry.arguments?.getString("movieId").let {
-                ReviewsScreen(navController = navController, movieId = it.toString().toInt())
+                ReviewsScreen(navController = navController, movieId = it.toString())
             }
         }
     }

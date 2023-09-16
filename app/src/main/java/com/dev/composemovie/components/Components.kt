@@ -7,8 +7,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Comment
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -24,10 +22,10 @@ import com.dev.composemovie.R
 import com.dev.composemovie.navigation.MovieScreens
 
 @Composable
-fun MovieAppLogo(modifier: Modifier = Modifier) {
+fun MovieAppLogo() {
     Image(
         painter = rememberImagePainter(data = R.drawable.tmdb),
-        contentDescription = "pokemon image"
+        contentDescription = "tmdb image"
     )
 }
 
@@ -37,30 +35,19 @@ fun MovieAppBar(
     icon: ImageVector? = null,
     showReviews: Boolean = true,
     navController: NavController,
+    items: String?,
     onBackArrowClicked: () -> Unit = {}
 ) {
 
     TopAppBar(
         title = {
-            if (showReviews) {
-                Image(painter = rememberImagePainter(data = R.drawable.baseline_reviews_24),
-                    contentDescription = "Logo Icon",
-                    modifier = Modifier
-                        .width(36.dp)
-                        .height(36.dp)
-                        .clickable {
-                            navController.navigate(MovieScreens.ReviewScreen.name)
-                        }
-                )
-
-            }
             Row(verticalAlignment = Alignment.CenterVertically) {
                 if (icon != null) {
                     Icon(imageVector = icon, contentDescription = "arrow back",
                         tint = Color.Red.copy(alpha = 0.7f),
                         modifier = Modifier.clickable { onBackArrowClicked.invoke() })
+                    Spacer(modifier = Modifier.width(8.dp))
                 }
-                Spacer(modifier = Modifier.width(40.dp))
                 Text(
                     text = title,
                     color = Color.Red.copy(alpha = 0.7f),
@@ -71,6 +58,21 @@ fun MovieAppBar(
             }
 
 
+        },
+        actions = {
+            if (showReviews) {
+                Image(painter = rememberImagePainter(data = R.drawable.baseline_reviews_24),
+                    contentDescription = "Logo Icon",
+                    modifier = Modifier
+                        .width(36.dp)
+                        .height(36.dp)
+                        .clickable {
+                            navController.navigate(MovieScreens.ReviewsScreen.name + "/$items")
+                        }
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+
+            }
         },
         backgroundColor = Color.Transparent,
         elevation = 0.dp

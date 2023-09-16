@@ -11,7 +11,6 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.dev.composemovie.navigation.MovieNavigation
 import com.dev.composemovie.ui.theme.ComposeMovieTheme
 import dagger.hilt.android.AndroidEntryPoint
